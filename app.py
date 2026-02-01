@@ -11,7 +11,16 @@ import streamlit as st
 import pickle
 
 import numpy as np
+def load_model():
+    with open("ddi_lr_model.pkl", "rb") as f:
+        model = pickle.load(f)
+    with open("ddi_tfidf.pkl", "rb") as f:
+        tfidf = pickle.load(f)
+    return model, tfidf
 
+model, tfidf = load_model()
+
+st.write("✅ Model loaded")
 # Load saved model & vectorizer
 with open("ddi_lr_model.pkl", "rb") as f:
     model = pickle.load(f)
